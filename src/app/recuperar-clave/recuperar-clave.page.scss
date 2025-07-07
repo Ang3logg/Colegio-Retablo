@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:host {
+  --ion-font-family: 'Poppins', sans-serif;
+  --ion-background-color: #ffffff;
+}
+
+/* ===========================
+   CONTENIDO PRINCIPAL
+=========================== */
+ion-content {
+  --background: #ffffff;
+  color: #000000;
+  padding: 1rem;
+}
+
+/* ===========================
+   TOOLBAR SUPERIOR
+=========================== */
+ion-toolbar {
+  --background: #4a90e2;
+  --color: #ffffff;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+ion-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  margin-left: -32px; /* compensa espacio del botón atrás */
+  padding-right: 32px;
+}
+
+/* ===========================
+   BOTÓN DE RETROCESO
+=========================== */
+ion-back-button {
+  --color: white;
+  --padding-start: 0;
+  --padding-end: 0;
+  --min-width: 32px;
+}
+ion-back-button ion-icon {
+  font-size: 22px;
+}
+
+/* ===========================
+   TARJETA DE FORMULARIO
+=========================== */
+ion-card {
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e0e0e0;
+  padding: 0.5rem;
+}
+
+ion-card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #203e98;
+  text-align: center;
+}
+
+ion-card-content p {
+  font-size: 0.95rem;
+  color: #444;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* ===========================
+   INPUT DE CORREO
+=========================== */
+ion-item {
+  --background: #ffffff;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+}
+
+ion-label {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+ion-input {
+  font-size: 1rem;
+  color: #000;
+}
+
+/* ===========================
+   BOTÓN DE ENVÍO
+=========================== */
+ion-button {
+  margin-top: 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  height: 44px;
+  --background: #4a90e2;
+  --color: #ffffff;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+}
+
+/* ===========================
+   MENSAJE DE ÉXITO
+=========================== */
+.mensaje-exito {
+  color: green;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media screen and (max-width: 375px) {
+  ion-title {
+    font-size: 1.05rem;
+    padding-right: 20px;
+    margin-left: -24px;
+  }
+
+  ion-card-title {
+    font-size: 1.1rem;
+  }
+
+  ion-button {
+    font-size: 0.9rem;
+  }
+}

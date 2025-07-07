@@ -1,0 +1,45 @@
+<ion-header>
+  <div class="header">
+    <img src="../../assets/images/aea-pica.png" alt="Logo Institución" class="logo-header" />
+    <h1>Bienvenido padre de familia</h1>
+  </div>
+</ion-header>
+<ion-content class="main-content">
+  <div class="container">
+    <h2 class="section-title">Menú para Padres</h2>
+
+    <div class="menu-grid">
+      <div class="menu-item" (click)="goToCalendario()">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <p>Calendario de reuniones</p>
+      </div>
+
+      <div class="menu-item" (click)="goToProgramarReunion()">
+        <ion-icon name="people-outline"></ion-icon>
+        <p>Programar reuniones</p>
+      </div>
+
+      <div class="menu-item" (click)="goToMensajes()">
+        <ion-icon name="chatbubble-outline"></ion-icon>
+        <p>Mensajes para director</p>
+      </div>
+
+      <div class="menu-item" (click)="goToReportes()">
+        <ion-icon name="document-outline"></ion-icon>
+        <p>Reportes de asistencia</p>
+      </div>
+
+      <div class="menu-row-center">
+        <div class="menu-item" (click)="goToPerfil()">
+          <ion-icon name="person-circle-outline"></ion-icon>
+          <p>Mi perfil</p>
+        </div>
+
+        <div class="menu-item" (click)="goToConfiguracion()">
+          <ion-icon name="settings-outline"></ion-icon>
+          <p>Configuración</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <!-- Botón de retroceso -->
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/reportes-asistencia"
+        icon="arrow-back-outline"
+        text=""
+        class="custom-back-btn"
+      ></ion-back-button>
+    </ion-buttons>
+
+    <!-- Título centrado -->
+    <ion-title class="titulo-centrado">📝 Nuevo Reporte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding fondo-reporte">
+  <ion-card class="form-reporte">
+    <ion-card-header>
+      <ion-card-title>Información del Reporte</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label position="stacked"
+            >Tipo de Reporte <ion-text color="danger">*</ion-text></ion-label
+          >
+          <ion-select [(ngModel)]="tipoReporte" placeholder="Selecciona tipo">
+            <ion-select-option value="asistencia">Asistencia</ion-select-option>
+            <ion-select-option value="actividad">Actividad</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked"
+            >Grado y Sección <ion-text color="danger">*</ion-text></ion-label
+          >
+          <ion-input
+            [(ngModel)]="gradoSeccion"
+            placeholder="Ej. 2do B"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked"
+            >Fecha del Reporte <ion-text color="danger">*</ion-text></ion-label
+          >
+          <ion-input
+            [(ngModel)]="fecha"
+            type="date"
+            placeholder="Selecciona fecha"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Descripción</ion-label>
+          <ion-textarea
+            [(ngModel)]="descripcion"
+            placeholder="Escribe observaciones o detalles..."
+          >
+          </ion-textarea>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button
+    expand="block"
+    color="success"
+    class="guardar-btn"
+    (click)="guardarReporte()"
+  >
+    💾 Guardar Reporte
+  </ion-button>
+</ion-content>

@@ -23,6 +23,9 @@ export class MenuPrincipalPage {
 goToMensajes() {
   this.router.navigate(['/mensajes']);
 }
+goToComunicados() {
+  this.router.navigate(['/comunicados-director']);
+}
 goToConfiguracion() {
   this.router.navigate(['/configuracion']);
 }
@@ -30,7 +33,14 @@ goToReportes() {
   this.router.navigate(['/reportes-asistencia']);
 }
 goToCalendario() {
-  this.router.navigate(['/calendario']);
+  const datos = JSON.parse(localStorage.getItem('usuario') || '{}');
+  const rol = datos.rol || 'usuario';
+
+  if (rol === 'padre') {
+    this.router.navigate(['/calendario-pd']);
+  } else {
+    this.router.navigate(['/calendario']);
+  }
 }
 
 }

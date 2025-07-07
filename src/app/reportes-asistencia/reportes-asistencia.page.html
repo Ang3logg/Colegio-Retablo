@@ -1,8 +1,22 @@
 <ion-header>
   <ion-toolbar class="header-toolbar">
-    <ion-title>Reportes de Asistencia / Actividad</ion-title>
+    <!-- Botón de retroceso -->
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/menu-principal"
+        icon="arrow-back-outline"
+        text=""
+        class="custom-back-btn"
+      ></ion-back-button>
+    </ion-buttons>
+
+    <!-- Título centrado -->
+    <ion-title class="titulo-centrado">
+      📊 Reportes de Asistencia / Actividad
+    </ion-title>
   </ion-toolbar>
 
+  <!-- Buscador -->
   <ion-toolbar class="search-toolbar">
     <ion-searchbar
       placeholder="Buscar reportes"
@@ -10,45 +24,43 @@
       debounce="300"
       animated="true"
       class="searchbar-custom"
+      [(ngModel)]="busqueda"
+      (ionInput)="filtrarReportes()"
     ></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="reportes-content">
-  <ion-button expand="block" class="nuevo-reporte-btn">
+  <!-- Botón nuevo -->
+  <ion-button
+    expand="block"
+    class="nuevo-reporte-btn"
+    (click)="goToNuevoReporte()"
+  >
     <ion-icon slot="start" name="add-circle-outline"></ion-icon>
     Nuevo Reporte
   </ion-button>
 
-  <ion-list class="lista-reportes">
-    <ion-item>
-      <ion-label>
-        <h3>Asistencia mensual - 1ro A</h3>
-        <p>15/05/2025 - Asistencia</p>
-      </ion-label>
-      <ion-button fill="clear" color="medium" slot="end">
-        <ion-icon name="eye-outline"></ion-icon>
-      </ion-button>
-    </ion-item>
+  <!-- Lista de reportes -->
+  <div class="container-reportes">
+    <ion-card class="card-reporte" *ngFor="let r of reportesFiltrados">
+      <ion-card-header>
+        <ion-card-title>{{ r.titulo }}</ion-card-title>
+        <ion-card-subtitle>{{ r.fecha }} · {{ r.tipo }}</ion-card-subtitle>
+      </ion-card-header>
 
-    <ion-item>
-      <ion-label>
-        <h3>Informe de conducta - Abril</h3>
-        <p>10/05/2025 - Actividad</p>
-      </ion-label>
-      <ion-button fill="clear" color="medium" slot="end">
-        <ion-icon name="eye-outline"></ion-icon>
-      </ion-button>
-    </ion-item>
+      <ion-card-content>
+        <ion-button
+  size="small"
+  expand="block"
+  class="btn-detalle"
+  (click)="verDetalle(r.id)"
+>
+  <ion-icon name="eye-outline" slot="start"></ion-icon>
+  Ver Detalle
+</ion-button>
 
-    <ion-item>
-      <ion-label>
-        <h3>Reunión con Padres - 2do B</h3>
-        <p>08/05/2025 - Asistencia</p>
-      </ion-label>
-      <ion-button fill="clear" color="medium" slot="end">
-        <ion-icon name="eye-outline"></ion-icon>
-      </ion-button>
-    </ion-item>
-  </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

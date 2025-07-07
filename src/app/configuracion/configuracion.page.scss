@@ -92,5 +92,29 @@ ion-toggle {
 .btn-cerrar-sesion ion-icon {
   color: #721c1b !important; /* Un rojo oscuro para buen contraste */
 }
+.custom-back-btn {
+  --color: white;
+  --padding-start: 0;
+  --padding-end: 0;
+  --min-width: 32px;
+}
+
+.custom-back-btn ion-icon {
+  font-size: 24px;
+}
+
+.titulo-centrado {
+  text-align: center;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: white;
+}
+
 
 

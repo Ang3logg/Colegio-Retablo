@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:host {
+  --ion-font-family: 'Poppins', sans-serif;
+  --ion-background-color: #ffffff;
+}
+
+/* ===========================
+   CONTENIDO
+=========================== */
+ion-content.privacidad-content {
+  --background: #ffffff;
+  color: #000000;
+  padding: 1.5rem 1.2rem;
+}
+
+/* ===========================
+   TOOLBAR AZUL
+=========================== */
+ion-toolbar {
+  --background: #4a90e2;
+  --color: #ffffff;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+ion-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: -32px;
+  padding-right: 32px;
+}
+
+/* ===========================
+   BOTÓN DE RETROCESO
+=========================== */
+ion-back-button {
+  --color: #ffffff;
+  --padding-start: 0;
+  --padding-end: 0;
+  --min-width: 32px;
+}
+ion-back-button ion-icon {
+  font-size: 22px;
+}
+
+/* ===========================
+   TÍTULO DE SECCIÓN
+=========================== */
+.titulo {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #203e98;
+  margin-bottom: 1.5rem;
+}
+
+/* ===========================
+   TEXTO DE LA POLÍTICA
+=========================== */
+ion-content p {
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: justify;
+  color: #333333;
+  margin-bottom: 1.2rem;
+  padding: 0 0.2rem;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media screen and (max-width: 375px) {
+  ion-title {
+    font-size: 1.05rem;
+    padding-right: 20px;
+    margin-left: -24px;
+  }
+
+  .titulo {
+    font-size: 1.3rem;
+  }
+
+  ion-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}

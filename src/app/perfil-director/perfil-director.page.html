@@ -1,6 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Perfil del Director</ion-title>
+    <!-- Botón de retroceso -->
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/menu-principal"
+        icon="arrow-back-outline"
+        text=""
+        class="custom-back-btn"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title class="titulo-centrado">Perfil del Director</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,15 +20,18 @@
     </ion-card-header>
 
     <ion-card-content>
-
       <div class="form-grid">
         <ion-item>
-          <ion-label position="floating" class="label">Nombre completo</ion-label>
+          <ion-label position="floating" class="label"
+            >Nombre completo</ion-label
+          >
           <ion-input [(ngModel)]="perfil.nombre"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating" class="label">Correo electrónico</ion-label>
+          <ion-label position="floating" class="label"
+            >Correo electrónico</ion-label
+          >
           <ion-input [(ngModel)]="perfil.correo" type="email"></ion-input>
         </ion-item>
 
@@ -42,7 +54,6 @@
       <ion-button expand="block" class="btn-guardar" (click)="guardarCambios()">
         Guardar Cambios
       </ion-button>
-
     </ion-card-content>
   </ion-card>
 </ion-content>

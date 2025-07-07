@@ -1,13 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-calendario',
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, IonicModule, FormsModule],
   templateUrl: './calendario.page.html',
   styleUrls: ['./calendario.page.scss'],
 })
-export class CalendarioPage {
+export class CalendarioPage implements OnInit {
   displayedMonth: number;
   displayedYear: number;
 
@@ -21,37 +27,60 @@ export class CalendarioPage {
     events?: { titulo: string, hora: string }[]
   }[] = [];
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private firestore: Firestore
+  ) {
     const now = new Date();
     this.displayedMonth = now.getMonth();
     this.displayedYear = now.getFullYear();
+  }
+
+  ngOnInit() {
     this.generateCalendar();
   }
 
   generateCalendar() {
     const daysInMonth = new Date(this.displayedYear, this.displayedMonth + 1, 0).getDate();
-    this.calendarDays = [];
+    const reunionesRef = collection(this.firestore, 'reuniones');
 
-    for (let i = 1; i <= daysInMonth; i++) {
-      const date = new Date(this.displayedYear, this.displayedMonth, i);
-      const dayName = this.weekDays[date.getDay()];
+    collectionData(reunionesRef, { idField: 'id' }).pipe(
+      map((reuniones: any[]) => {
+        const reunionesPorDia: { [key: number]: { titulo: string, hora: string }[] } = {};
 
-      this.calendarDays.push({
-        day: i,
-        dayName,
-        events:
-          i === 13
-            ? [{ titulo: 'Reunión', hora: '3:00 PM' }]
-            : i === 14
-            ? [
-                { titulo: 'Actualizar app', hora: '9:00 AM' },
-                { titulo: 'Reunión', hora: '10:00 AM' },
-              ]
-            : i === 15
-            ? [{ titulo: 'Actualizar sitio web', hora: '3:00 PM' }]
-            : [],
-      });
-    }
+        reuniones.forEach(reunion => {
+          const fecha = new Date(reunion.fecha);
+
+          if (
+            fecha.getUTCMonth() === this.displayedMonth &&
+            fecha.getUTCFullYear() === this.displayedYear
+          ) {
+            const dia = fecha.getUTCDate();
+
+            if (!reunionesPorDia[dia]) {
+              reunionesPorDia[dia] = [];
+            }
+
+            reunionesPorDia[dia].push({
+              titulo: reunion.asunto || 'Reunión',
+              hora: reunion.hora || ''
+            });
+          }
+        });
+
+        this.calendarDays = [];
+        for (let i = 1; i <= daysInMonth; i++) {
+          const date = new Date(this.displayedYear, this.displayedMonth, i);
+          const dayName = this.weekDays[date.getDay()];
+
+          this.calendarDays.push({
+            day: i,
+            dayName,
+            events: reunionesPorDia[i] ?? []
+          });
+        }
+      })
+    ).subscribe();
   }
 
   goToRecordatorio(dia: number, mes: number) {

@@ -1,53 +1,39 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Firestore, collection, collectionData, doc, updateDoc, deleteDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export interface Agenda {
   id?: string;
   motivo: string;
-  fecha: string;
   hora: string;
   turno: string;
-  dia?: number;
-  mes?: string;
+  dia: number;
+  mes: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class AgendaService {
+  constructor(private firestore: Firestore) {}
 
-  constructor(private firestore: AngularFirestore) {}
-
-  // Agregar nuevo recordatorio
-  addAgenda(agenda: Agenda) {
-    const [anio, mes, dia] = agenda.fecha.split('-');
-    const mesAbrev = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'][parseInt(mes)-1];
-
-    return this.firestore.collection('agendas').add({
-      motivo: agenda.motivo,
-      fecha: agenda.fecha,
-      hora: agenda.hora,
-      turno: agenda.turno,
-      dia: Number(dia),
-      mes: mesAbrev
-    });
-  }
-
-  // Obtener agendas por día y mes
   getAgendasPorDiaMes(dia: number, mes: string): Observable<Agenda[]> {
-    return this.firestore.collection<Agenda>('agendas', ref =>
-      ref.where('dia', '==', dia).where('mes', '==', mes)
-    ).valueChanges({ idField: 'id' });
+    const ref = collection(this.firestore, 'agendas'); // Tu colección se llama 'agendas'
+    return collectionData(ref, { idField: 'id' }).pipe(
+      map((agendas: any[]) =>
+        agendas.filter(a => a.dia === dia && a.mes === mes)
+      )
+    );
   }
 
-  // Actualizar motivo de un recordatorio
-  actualizarAgenda(id: string, data: Partial<Agenda>) {
-    return this.firestore.collection('agendas').doc(id).update(data);
+  actualizarAgenda(id: string, cambios: Partial<Agenda>): Promise<void> {
+    const agendaRef = doc(this.firestore, `agendas/${id}`);
+    return updateDoc(agendaRef, cambios);
   }
 
-  // Eliminar un recordatorio
-  eliminarAgenda(id: string) {
-    return this.firestore.collection('agendas').doc(id).delete();
+  eliminarAgenda(id: string): Promise<void> {
+    const agendaRef = doc(this.firestore, `agendas/${id}`);
+    return deleteDoc(agendaRef);
   }
 }

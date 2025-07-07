@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/reportes-asistencia"
+        icon="arrow-back-outline"
+        text=""
+        class="custom-back-btn"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">✏️ Editar Reporte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form *ngIf="reporte">
+    <ion-item>
+      <ion-label position="floating">Título</ion-label>
+      <ion-input [(ngModel)]="reporte.titulo" name="titulo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Tipo</ion-label>
+      <ion-select [(ngModel)]="reporte.tipo" name="tipo">
+        <ion-select-option value="Asistencia">Asistencia</ion-select-option>
+        <ion-select-option value="Actividad">Actividad</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">
+        Fecha del Reporte <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input
+        [(ngModel)]="reporte.fecha"
+        type="date"
+        placeholder="Selecciona fecha"
+        name="fecha"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Grado y Sección</ion-label>
+      <ion-input [(ngModel)]="reporte.gradoSeccion" name="gradoSeccion"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-textarea
+        [(ngModel)]="reporte.descripcion"
+        name="descripcion"
+        auto-grow="true"
+      ></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="block" color="success" (click)="guardarCambios()">
+      Guardar Cambios
+    </ion-button>
+
+    <ion-button expand="block" color="danger" (click)="eliminarReporte()">
+      Eliminar Reporte
+    </ion-button>
+  </form>
+
+  <div *ngIf="!reporte" class="ion-padding mensaje-error">
+    <p>No se encontró el reporte para editar.</p>
+  </div>
+</ion-content>

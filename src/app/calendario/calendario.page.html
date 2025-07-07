@@ -1,9 +1,3 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Calendario</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true" class="ion-padding">
 
   <!-- Navegación de Mes -->
@@ -28,8 +22,8 @@
         <div class="month">{{ monthNames[displayedMonth].slice(0, 3).toUpperCase() }}</div>
       </ion-card-header>
 
+      <ion-card-content *ngIf="item.events && item.events.length > 0">
 
-      <ion-card-content *ngIf="item.events?.length">
         <div class="events">
           <div class="event" *ngFor="let event of item.events">
             <span class="event-time">{{ event.hora }}</span>

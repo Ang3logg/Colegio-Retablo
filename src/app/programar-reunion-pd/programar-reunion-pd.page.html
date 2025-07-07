@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">📅 Nueva Reunión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="guardarReunion()">
+
+    <!-- 🔹 Sección Fecha -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>1. Selecciona la Fecha</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-datetime
+          presentation="date"
+          display-format="DD/MM/YYYY"
+          min="{{ today }}"
+          [(ngModel)]="fecha"
+          name="fecha"
+          required
+        ></ion-datetime>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- 🔹 Sección Hora (ahora con select) -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>2. Selecciona la Hora</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-select
+          [(ngModel)]="hora"
+          name="hora"
+          placeholder="Selecciona una hora"
+          interface="popover"
+          required
+        >
+          <ion-select-option value="07:00">07:00</ion-select-option>
+          <ion-select-option value="08:00">08:00</ion-select-option>
+          <ion-select-option value="09:00">09:00</ion-select-option>
+          <ion-select-option value="10:00">10:00</ion-select-option>
+          <ion-select-option value="11:00">11:00</ion-select-option>
+          <ion-select-option value="12:00">12:00</ion-select-option>
+          <ion-select-option value="13:00">13:00</ion-select-option>
+          <ion-select-option value="14:00">14:00</ion-select-option>
+          <ion-select-option value="15:00">15:00</ion-select-option>
+          <ion-select-option value="16:00">16:00</ion-select-option>
+          <ion-select-option value="17:00">17:00</ion-select-option>
+        </ion-select>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- 🔹 Sección Motivo -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>3. Escribe el Motivo</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-input
+          type="text"
+          placeholder="Ej. Solicito reunión para discutir avances..."
+          [(ngModel)]="motivo"
+          name="motivo"
+          required
+        ></ion-input>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Botón -->
+    <ion-button expand="block" type="submit" color="primary">
+      Guardar Reunión
+    </ion-button>
+  </form>
+</ion-content>

@@ -1,11 +1,4 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Recordatorio</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true" class="ion-padding">
-
   <!-- Cabecera con fecha y botón + -->
   <ion-card class="recordatorio-container">
     <ion-card-header class="recordatorio-header">
@@ -14,31 +7,99 @@
         <span class="month">{{ mesSeleccionado }}</span>
       </div>
       <ion-card-title>Mis Recordatorios</ion-card-title>
-      <ion-button fill="clear" size="large" (click)="irARegistrarAgenda()" class="boton-mas">
-        <ion-icon name="add-circle-outline"></ion-icon>
-      </ion-button>
+
     </ion-card-header>
 
     <!-- Lista de recordatorios -->
     <ion-card-content class="recordatorio-list">
-      <ion-card *ngFor="let recordatorio of recordatorios$ | async" class="recordatorio-card">
-        <ion-card-content class="recordatorio-text">
-          {{ recordatorio.motivo }} — {{ recordatorio.hora }} {{ recordatorio.turno }}
-        </ion-card-content>
-        <ion-row class="recordatorio-actions" justify-content="end">
-          <ion-col size="auto">
-            <ion-button size="small" fill="clear" color="primary" (click)="editarRecordatorio(recordatorio)">
+      <ion-card
+        *ngFor="let recordatorio of recordatorios$ | async"
+        class="recordatorio-card"
+      >
+        <ion-item lines="none">
+          <ion-label>
+            {{ recordatorio.motivo }} — {{ recordatorio.hora }}
+            {{ recordatorio.turno }}
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button
+              fill="clear"
+              color="primary"
+              (click)="editarRecordatorio(recordatorio)"
+            >
               <ion-icon slot="icon-only" name="create-outline"></ion-icon>
             </ion-button>
-          </ion-col>
-          <ion-col size="auto">
-            <ion-button size="small" fill="clear" color="danger" (click)="eliminarRecordatorio(recordatorio)">
+            <ion-button
+              fill="clear"
+              color="danger"
+              (click)="eliminarRecordatorio(recordatorio)"
+            >
               <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
             </ion-button>
-          </ion-col>
-        </ion-row>
+          </ion-buttons>
+        </ion-item>
       </ion-card>
     </ion-card-content>
   </ion-card>
 
+  <!-- Sección de reuniones del día -->
+  <ion-card
+    class="reuniones-container"
+    *ngIf="reunionesDelDia$ | async as reuniones"
+  >
+    <ng-container *ngIf="reuniones.length > 0; else sinReuniones">
+      <ion-card-header>
+        <ion-card-title>🗓️ Reuniones Programadas</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-card
+          *ngFor="let reunion of reuniones"
+          class="reunion-card"
+        >
+          <ion-card-header>
+            <ion-card-subtitle>
+  <strong>{{ reunion.fecha | date: 'fullDate' }}</strong>
+</ion-card-subtitle>
+
+            <ion-card-title>{{ reunion.asunto }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>
+              <strong>🕒 Hora:</strong> {{ reunion.hora }}
+              ({{ reunion.duracion || 'Duración no especificada' }})
+            </p>
+            <p>
+              <strong>📍 Ubicación / Modalidad:</strong>
+              {{ reunion.ubicacion || 'No especificada' }}
+            </p>
+            <p><strong>👥 Participantes:</strong> {{ reunion.participantes }}</p>
+            <p><strong>👤 Responsable:</strong> {{ reunion.responsable }}</p>
+            <p *ngIf="reunion.descripcion">
+              <strong>📋 Descripción:</strong> {{ reunion.descripcion }}
+            </p>
+            <p *ngIf="reunion.observaciones">
+              <strong>📝 Observaciones:</strong> {{ reunion.observaciones }}
+            </p>
+            <p *ngIf="reunion.enlaceZoom">
+              <strong>🔗 Enlace Zoom/Meet:</strong>
+              <a
+                [href]="reunion.enlaceZoom"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {{ reunion.enlaceZoom }}
+              </a>
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-card-content>
+    </ng-container>
+
+    <!-- Si no hay reuniones -->
+    <ng-template #sinReuniones>
+      <ion-card-content class="ion-text-center">
+        <p>No hay reuniones programadas para este día.</p>
+      </ion-card-content>
+    </ng-template>
+  </ion-card>
 </ion-content>

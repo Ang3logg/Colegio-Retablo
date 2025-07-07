@@ -136,3 +136,28 @@ ion-toolbar img, ion-toolbar ion-img {
   transform: translateY(-2px);
   cursor: pointer;
 }
+/* Estilo personalizado para el botón de retroceso */
+.custom-back-button {
+  --color: #1877f2;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+ion-back-button::part(native) {
+  transition: transform 0.2s ease;
+}
+
+ion-back-button:hover::part(native) {
+  transform: translateX(-2px);
+}
+.header-title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+}

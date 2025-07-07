@@ -1,0 +1,148 @@
+ion-content.perfil-content {
+  --background: #f9fbfd;
+  padding: 40px 20px 100px 20px; /* padding-bottom extra para espacio al final */
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+ion-card {
+  width: 100%;
+  max-width: none;
+  max-width: calc(100vw - 40px); /* margen 20px a cada lado */
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(74, 144, 226, 0.15);
+  border: 1px solid #d3dce6;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+ion-header ion-toolbar {
+  --background: #4a90e2;
+  --color: #fff;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+}
+
+ion-card-header {
+  background-color: #4a90e2;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 28px 36px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+}
+
+ion-card-content {
+  padding: 36px 48px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px 40px;
+}
+
+/* Espaciado entre label y los inputs/datetime */
+ion-item {
+  --background: transparent;
+  --border-color: #cbd5e1;
+  border-bottom: 2px solid #cbd5e1;
+  --min-height: 70px;
+  --padding-start: 0;
+  --padding-end: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px; /* separación entre label e input */
+}
+
+ion-label.label {
+  color: #4a90e2;
+  font-weight: 600;
+  font-size: 1rem;
+  padding-left: 6px;
+  min-width: 140px; /* ancho mínimo para que el label no quede muy pegado */
+}
+
+/* Ajuste específico para Fecha de ingreso para que quede un poco más cerca */
+ion-item.fecha-ingreso ion-label.label {
+  min-width: 120px; /* un poco menos ancho para que quede más cerca */
+}
+
+ion-input, ion-datetime {
+  font-size: 1rem;
+  color: #344054;
+  --padding-start: 8px;
+  flex: 1; /* para que el input/datetime ocupe el resto del espacio */
+  min-width: 180px; /* ancho mínimo para inputs y datetime */
+}
+
+ion-datetime {
+  background: transparent !important;
+  --background: transparent !important;
+  --placeholder-color: #a0aec0;
+  --color: #344054;
+  padding-left: 6px;
+}
+
+.fecha-ingreso {
+  grid-column: span 2;
+}
+
+ion-button.btn-guardar {
+  margin-top: 40px;
+  --background: #4a90e2;
+  --color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(74, 144, 226, 0.35);
+  transition: background-color 0.25s ease;
+  width: 100%;
+}
+
+ion-button.btn-guardar:hover {
+  --background: #3a78c2;
+  cursor: pointer;
+}
+
+/* Mejor apariencia para el picker (ion-datetime) cuando se abre */
+ion-datetime::part(picker-columns) {
+  background-color: #fff !important;
+  color: #344054 !important;
+  font-weight: 600;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 600px) {
+  ion-content.perfil-content {
+    padding: 20px 15px 100px 15px;
+  }
+
+  ion-card {
+    max-width: 100%;
+    margin: 0 10px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .fecha-ingreso {
+    grid-column: span 1;
+  }
+
+  ion-label.label {
+    min-width: auto; /* para que el label se adapte al ancho en móvil */
+  }
+
+  ion-item {
+    gap: 8px;
+    --min-height: 60px;
+  }
+}

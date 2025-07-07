@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/reuniones-programadas-director"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">📋 Detalle de Reunión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card *ngIf="reunion">
+    <ion-card-header>
+      <ion-card-title>{{ reunion.asunto }}</ion-card-title>
+      <ion-card-subtitle>{{ reunion.fecha }} - {{ reunion.hora }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Participantes:</strong> {{ reunion.participantes }}</p>
+      <p><strong>Duración:</strong> {{ reunion.duracion }}</p>
+      <p><strong>Ubicación:</strong> {{ reunion.ubicacion }}</p>
+      <p><strong>Responsable:</strong> {{ reunion.responsable }}</p>
+      <p><strong>Requiere Confirmación:</strong> {{ reunion.requiereConfirmacion ? 'Sí' : 'No' }}</p>
+      <p><strong>Descripción:</strong> {{ reunion.descripcion }}</p>
+      <p><strong>Observaciones:</strong> {{ reunion.observaciones }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button
+    expand="block"
+    color="warning"
+    [routerLink]="['/edicion-reunion', reunion.id]"
+  >
+    ✏️ Editar Reunión
+  </ion-button>
+
+  <div *ngIf="!reunion" class="ion-padding">
+    <p>No se encontró la reunión.</p>
+  </div>
+</ion-content>

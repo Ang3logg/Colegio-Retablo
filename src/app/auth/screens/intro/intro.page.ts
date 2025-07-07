@@ -54,9 +54,14 @@ export class IntroPage implements OnInit {
   }
 
   async iniciarSesion() {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+      await this.mostrarAlerta('Error', 'Completa todos los campos');
+      return;
+    }
+
     const { nombre, contrasena } = this.loginForm.value;
 
-    // Buscar correo por nombre de usuario
     const usuariosRef = collection(this.firestore, 'usuarios');
     const q = query(usuariosRef, where('nombre', '==', nombre));
     const querySnapshot = await getDocs(q);
@@ -67,12 +72,20 @@ export class IntroPage implements OnInit {
     }
 
     const userDoc = querySnapshot.docs[0];
-    const correo = userDoc.data()['correo'];
+    const data = userDoc.data();
+    const correo = data['correo'];
+    const rol = data['rol'] || 'usuario';
 
     try {
       await signInWithEmailAndPassword(this.auth, correo, contrasena);
       await this.mostrarAlerta('Bienvenido', nombre);
-      this.router.navigate(['/menu-principal']);
+
+      if (rol === 'padre') {
+        this.router.navigate(['/menu-principal-pd']);
+      } else {
+        this.router.navigate(['/menu-principal']);
+      }
+
     } catch (error) {
       console.error(error);
       await this.mostrarAlerta('Error', 'Correo o contraseña incorrectos');
@@ -90,6 +103,8 @@ export class IntroPage implements OnInit {
       const q = query(usuariosRef, where('correo', '==', user.email));
       const querySnapshot = await getDocs(q);
 
+      let rol = 'usuario';
+
       if (querySnapshot.empty) {
         await addDoc(usuariosRef, {
           nombre: user.displayName || 'Sin nombre',
@@ -98,10 +113,18 @@ export class IntroPage implements OnInit {
           fechaRegistro: new Date(),
           rol: 'usuario'
         });
+      } else {
+        const data = querySnapshot.docs[0].data();
+        rol = data['rol'] || 'usuario';
       }
 
       await this.mostrarAlerta('Bienvenido', user.displayName || user.email || 'Usuario');
-      this.router.navigate(['/menu-principal']);
+
+      if (rol === 'padre') {
+        this.router.navigate(['/menu-principal-pd']);
+      } else {
+        this.router.navigate(['/menu-principal']);
+      }
 
     } catch (error) {
       console.error('Error en login con Google:', error);

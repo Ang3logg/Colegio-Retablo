@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:host {
+  --ion-font-family: 'Poppins', sans-serif;
+  --ion-color-primary: #3880ff;
+}
+
+.header {
+  background: linear-gradient(135deg, #477fdf, #4c8dff);
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(56, 128, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  text-align: center;
+  position: relative;
+}
+
+.header h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 0;
+  letter-spacing: 1px;
+  flex: 1 1 auto;
+}
+
+.logo-header {
+  max-height: 50px;
+  flex-shrink: 0;
+}
+
+.main-content {
+  --background: #f7f9fc;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.section-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #3880ff;
+  text-align: left;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.menu-row-center {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.menu-item {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 220px;
+  box-sizing: border-box;
+}
+
+.menu-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.menu-item ion-icon {
+  font-size: 32px;
+  color: #3880ff;
+}
+
+.menu-item p {
+  margin-top: 0.75rem;
+  font-weight: 500;
+  color: #333;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+}
+
+.bottom-image {
+  max-width: 220px;
+  margin: 3rem auto 1rem auto;
+  display: block;
+}
+
+/* -------- Responsive -------- */
+@media (max-width: 1024px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .logo-header {
+    max-height: 45px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-row-center {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu-item {
+    width: 100%;
+    max-width: 280px;
+  }
+}

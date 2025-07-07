@@ -1,71 +1,74 @@
 <ion-header>
   <div class="header">
-    <h1>Reuniones Programadas</h1>
+    <!-- Botón de retroceso -->
+    <ion-buttons slot="start" class="back-button-container">
+      <ion-back-button
+        defaultHref="/menu-principal"
+        icon="arrow-back-outline"
+        text=""
+        class="custom-back-btn"
+      ></ion-back-button>
+    </ion-buttons>
+
+    <!-- Contenedor flexible para título y botón -->
+    <div class="header-content">
+      <h1 class="titulo-header">Reuniones Programadas</h1>
+
+      <ion-button
+        fill="solid"
+        color="light"
+        class="nueva-reunion-btn"
+        size="small"
+        (click)="goToNuevaReunion()"
+      >
+        <ion-icon name="add" slot="start"></ion-icon>
+        Nueva Reunión
+      </ion-button>
+    </div>
   </div>
 </ion-header>
 
 <ion-content class="main-content">
   <div class="container">
-    <table class="reuniones-table">
-      <thead>
-        <tr>
-          <th>Asunto</th>
-          <th>Fecha</th>
-          <th>Hora</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Reunión con padres</td>
-          <td>2025-05-25</td>
-          <td>10:00 AM</td>
-          <td>
-            <ion-button size="small" color="success">Comenzar</ion-button>
-            <ion-button size="small" color="danger">Eliminar</ion-button>
-          </td>
-        </tr>
-        <!-- Puedes repetir más filas con *ngFor en Angular -->
-      </tbody>
-      <tbody>
-  <tr>
-    <td>Reunión con padres</td>
-    <td>2025-05-25</td>
-    <td>10:00 AM</td>
-    <td>
-      <ion-button size="small" color="success">Comenzar</ion-button>
-      <ion-button size="small" color="danger">Eliminar</ion-button>
-    </td>
-  </tr>
-  <tr>
-    <td>Reunión equipo docente</td>
-    <td>2025-05-27</td>
-    <td>3:00 PM</td>
-    <td>
-      <ion-button size="small" color="success">Comenzar</ion-button>
-      <ion-button size="small" color="danger">Eliminar</ion-button>
-    </td>
-  </tr>
-  <tr>
-    <td>Revisión anual</td>
-    <td>2025-06-01</td>
-    <td>9:00 AM</td>
-    <td>
-      <ion-button size="small" color="success">Comenzar</ion-button>
-      <ion-button size="small" color="danger">Eliminar</ion-button>
-    </td>
-  </tr>
-  <tr>
-    <td>Capacitación docente</td>
-    <td>2025-06-05</td>
-    <td>11:00 AM</td>
-    <td>
-      <ion-button size="small" color="success">Comenzar</ion-button>
-      <ion-button size="small" color="danger">Eliminar</ion-button>
-    </td>
-  </tr>
-</tbody>
+    <ion-card *ngFor="let reunion of reuniones$ | async">
+      <ion-card-header>
+        <ion-card-title>{{ reunion.asunto }}</ion-card-title>
+        <ion-card-subtitle
+          >{{ reunion.fecha }} - {{ reunion.hora }}</ion-card-subtitle
+        >
+      </ion-card-header>
 
-    </table>
+      <ion-card-content>
+        <div class="botones-reunion">
+          <ion-button
+            size="small"
+            color="success"
+            [disabled]="!reunion.enlaceZoom"
+            [href]="reunion.enlaceZoom"
+            target="_blank"
+          >
+            Comenzar
+          </ion-button>
+
+          <ion-button
+            size="small"
+            color="info"
+            (click)="goToDetalleReunion(reunion.id)"
+          >
+            Detalles
+          </ion-button>
+
+          <ion-button
+            size="small"
+            color="danger"
+            (click)="eliminarReunion(reunion.id)"
+          >
+            Eliminar
+          </ion-button>
+
+          >
+        </div>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

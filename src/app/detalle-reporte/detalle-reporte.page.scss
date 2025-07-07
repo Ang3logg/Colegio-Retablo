@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:host {
+  --ion-font-family: 'Poppins', sans-serif;
+  --ion-background-color: #ffffff;
+}
+
+/* =============================
+   CONTENIDO Y BACKGROUND
+============================= */
+ion-content {
+  --background: #ffffff !important;
+  padding: 1rem;
+}
+
+/* =============================
+   TOOLBAR SUPERIOR
+============================= */
+ion-toolbar {
+  --background: #4a90e2;
+  --color: #ffffff;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 8px;
+}
+
+/* Asegura que el título esté bien centrado y no choque con la flecha */
+ion-title.ion-text-center {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: -32px; /* compensa espacio de la flecha */
+  padding-right: 32px; /* evita choque con íconos al lado derecho */
+}
+
+/* =============================
+   BOTÓN DE RETROCESO
+============================= */
+.custom-back-btn {
+  --color: white;
+  --padding-start: 0;
+  --padding-end: 0;
+  --min-width: 32px;
+}
+
+.custom-back-btn ion-icon {
+  font-size: 22px;
+}
+
+/* =============================
+   CARD DE REPORTE
+============================= */
+ion-card {
+  border-radius: 16px;
+  background-color: #ffffff !important;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e0e0;
+  padding: 0.5rem;
+}
+
+ion-card-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1e88e5;
+  margin-bottom: 0.3rem;
+}
+
+ion-card-subtitle {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* =============================
+   BOTONES DE ACCIÓN
+============================= */
+ion-button {
+  margin-top: 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  height: 44px;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+  --background: #4a90e2;
+  --color: white;
+}
+
+ion-button[color="warning"] {
+  --background: #f0ad4e;
+  --color: #fff;
+}
+
+ion-button[color="danger"] {
+  --background: #d9534f;
+  --color: #fff;
+}
+
+/* =============================
+   MENSAJE DE ERROR
+============================= */
+.mensaje-error {
+  text-align: center;
+  padding: 2rem;
+  color: #c62828;
+  font-weight: 600;
+  background-color: #ffffff;
+}
+
+/* =============================
+   PDF (Vista oculta)
+============================= */
+#pdf-content {
+  display: none;
+  padding: 30px;
+  font-family: 'Arial', sans-serif;
+  background-color: white;
+  color: #000;
+}
+
+/* =============================
+   RESPONSIVE
+============================= */
+@media screen and (max-width: 375px) {
+  ion-title.ion-text-center {
+    font-size: 1.05rem;
+    padding-right: 20px;
+    margin-left: -24px;
+  }
+
+  ion-card-title {
+    font-size: 1.2rem;
+  }
+
+  ion-button {
+    font-size: 0.9rem;
+  }
+
+  #reporte-pdf img {
+    width: 90px !important;
+  }
+}

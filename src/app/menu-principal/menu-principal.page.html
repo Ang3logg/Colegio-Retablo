@@ -1,6 +1,6 @@
 <ion-header>
   <div class="header">
-    <img src="../../assets/images/aea-pica.png" alt="Logo Institución" class="logo-header" />
+    <img src="assets/images/aea-pica.png" alt="Logo Institución" class="logo-header" />
     <h1>Institución Educativa 2005 Retablo</h1>
   </div>
 </ion-header>
@@ -12,14 +12,15 @@
 
     <!-- Menú principal -->
     <div class="menu-grid">
-      <!-- Íconos más importantes arriba -->
+      <!-- Íconos principales -->
       <div class="menu-item" (click)="goToCalendario()">
         <ion-icon name="calendar-outline"></ion-icon>
         <p>Calendario de reuniones</p>
       </div>
-      <div class="menu-item" (click)="goToMensajes()">
-        <ion-icon name="chatbubble-outline"></ion-icon>
-        <p>Mensajes</p>
+
+      <div class="menu-item" (click)="goToComunicados()">
+        <ion-icon name="megaphone-outline"></ion-icon>
+        <p>Comunicados</p>
       </div>
 
       <div class="menu-item" (click)="goToReuniones()">
@@ -32,17 +33,15 @@
         <p>Reportes de asistencia o actividad</p>
       </div>
 
-      <!-- Íconos menos prioritarios abajo y centrados -->
-      <div class="menu-row-center">
-        <div class="menu-item" (click)="goToConfiguracion()">
-          <ion-icon name="settings-outline"></ion-icon>
-          <p>Configuración</p>
-        </div>
+      <!-- Ya no usamos un bloque separado -->
+      <div class="menu-item" (click)="goToConfiguracion()">
+        <ion-icon name="settings-outline"></ion-icon>
+        <p>Configuración</p>
+      </div>
 
-        <div class="menu-item" (click)="goToPerfil()">
-          <ion-icon name="person-outline"></ion-icon>
-          <p>Perfil</p>
-        </div>
+      <div class="menu-item" (click)="goToPerfil()">
+        <ion-icon name="person-outline"></ion-icon>
+        <p>Perfil</p>
       </div>
     </div>
   </div>

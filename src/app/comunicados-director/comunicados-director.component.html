@@ -1,0 +1,77 @@
+<ion-header>
+  <div class="header">
+    <ion-buttons slot="start" class="back-button-container">
+      <ion-back-button
+        defaultHref="/menu-principal"
+        icon="arrow-back-outline"
+        text=""
+        class="custom-back-btn"
+      ></ion-back-button>
+    </ion-buttons>
+
+    <div class="header-content">
+      <h1 class="titulo-header">Comunicados</h1>
+      <ion-button
+        fill="solid"
+        color="light"
+        class="nueva-reunion-btn"
+        size="small"
+        (click)="irACrearComunicado()"
+      >
+        <ion-icon name="add" slot="start"></ion-icon>
+        Nuevo Comunicado
+      </ion-button>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content class="main-content">
+  <div class="container">
+    <ng-container *ngIf="comunicados$ | async as comunicados; else cargando">
+      <ion-card *ngFor="let comunicado of comunicados">
+        <ion-card-header>
+          <ion-card-title>{{ comunicado.titulo }}</ion-card-title>
+          <ion-card-subtitle>{{ comunicado.fecha?.toDate() | date:'fullDate' }}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+  <p>{{ comunicado.mensaje }}</p>
+
+  <div class="botones-reunion">
+    <ion-button
+      *ngIf="comunicado.adjuntoURL"
+      fill="outline"
+      size="small"
+      (click)="verAdjunto(comunicado.adjuntoURL)"
+    >
+      Ver Adjunto
+    </ion-button>
+  </div>
+
+  <div class="acciones-comunicado">
+    <ion-button
+      fill="clear"
+      size="small"
+      color="primary"
+      (click)="editar(comunicado.id)"
+    >
+      Editar
+    </ion-button>
+    <ion-button
+      fill="clear"
+      size="small"
+      color="danger"
+      (click)="eliminar(comunicado.id)"
+    >
+      Eliminar
+    </ion-button>
+  </div>
+</ion-card-content>
+      </ion-card>
+    </ng-container>
+
+    <ng-template #cargando>
+      <p>Cargando comunicados...</p>
+    </ng-template>
+  </div>
+</ion-content>

@@ -1,0 +1,146 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <!-- Botón de retroceso -->
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/reuniones-programadas-director"
+        icon="arrow-back-outline"
+        text=""
+        class="custom-back-btn"
+      ></ion-back-button>
+    </ion-buttons>
+
+    <!-- Título centrado -->
+    <ion-title class="titulo-centrado">🗓️ Programar Nueva Reunión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card class="form-card">
+    <ion-card-header>
+      <ion-card-title>Información de la Reunión</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list lines="none" class="form-list">
+        <ion-item>
+          <ion-label position="stacked"
+            >Asunto <ion-text color="danger">*</ion-text></ion-label
+          >
+          <ion-input
+            [(ngModel)]="asunto"
+            placeholder="Ej. Reunión con padres"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked"
+            >Participantes <ion-text color="danger">*</ion-text></ion-label
+          >
+          <ion-input
+            [(ngModel)]="participantes"
+            placeholder="Ej. Padres, docentes, directivos"
+          ></ion-input>
+        </ion-item>
+
+        <!-- FECHA -->
+        <ion-item>
+          <ion-label position="stacked"
+            >Fecha del Reporte <ion-text color="danger">*</ion-text></ion-label
+          >
+          <ion-input
+            [(ngModel)]="fecha"
+            type="date"
+            placeholder="Selecciona fecha"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label position="stacked">
+            Hora <ion-text color="danger">*</ion-text>
+          </ion-label>
+
+          <div class="hora-meridiano-wrapper">
+            <ion-input
+              [(ngModel)]="hora"
+              type="time"
+              placeholder="Selecciona hora"
+              class="hora-input"
+            ></ion-input>
+
+            <ion-select
+              [(ngModel)]="meridiano"
+              interface="popover"
+              class="meridiano-select"
+            >
+              <ion-select-option value="AM">AM</ion-select-option>
+              <ion-select-option value="PM">PM</ion-select-option>
+            </ion-select>
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Duración Estimada</ion-label>
+          <ion-input
+            [(ngModel)]="duracion"
+            placeholder="Ej. 1 hora, 30 minutos"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Ubicación / Modalidad</ion-label>
+          <ion-input
+            [(ngModel)]="ubicacion"
+            placeholder="Ej. Aula 2B, Zoom, Dirección"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Responsable</ion-label>
+          <ion-input
+            [(ngModel)]="responsable"
+            placeholder="Nombre del responsable"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="checkbox-item">
+          <ion-checkbox
+            slot="start"
+            [(ngModel)]="requiereConfirmacion"
+          ></ion-checkbox>
+          <ion-label>¿Requiere confirmación de asistencia?</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Descripción</ion-label>
+          <ion-textarea
+            [(ngModel)]="descripcion"
+            placeholder="Temas a tratar, puntos clave, etc."
+          ></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked"
+            >Observaciones (solo para el director)</ion-label
+          >
+          <ion-textarea
+            [(ngModel)]="observaciones"
+            placeholder="Notas internas, confidenciales..."
+          ></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Enlace de Zoom / Meet</ion-label>
+          <ion-input
+            [(ngModel)]="enlaceZoom"
+            placeholder="https://zoom.us/..."
+            type="url"
+          ></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" color="success" (click)="guardarReunion()">
+    💾 Guardar Reunión
+  </ion-button>
+</ion-content>

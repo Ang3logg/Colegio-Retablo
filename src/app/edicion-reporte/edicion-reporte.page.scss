@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:host {
+  --ion-font-family: 'Poppins', sans-serif;
+  --ion-background-color: #ffffff;
+}
+
+/* Header azul institucional */
+ion-toolbar {
+  --background: #4a90e2;
+  --color: #ffffff;
+  box-shadow: none;
+  border: none;
+}
+
+ion-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: -32px;
+  padding-right: 32px;
+  color: #ffffff;
+}
+
+.custom-back-btn {
+  --color: #ffffff;
+  --padding-start: 0;
+  --padding-end: 0;
+  --min-width: 32px;
+}
+.custom-back-btn ion-icon {
+  font-size: 22px;
+}
+
+ion-content {
+  --background: #ffffff;
+  padding: 1.5rem;
+}
+
+/* Campos del formulario */
+ion-item {
+  --background: #ffffff;
+  --color: #444;
+  border-radius: 12px;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+ion-label {
+  color: #333 !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+ion-input,
+ion-textarea,
+ion-select {
+  font-size: 1rem;
+  color: #000;
+  font-family: 'Poppins', sans-serif;
+}
+
+ion-input::part(native) {
+  padding: 10px 0;
+}
+
+/* Botones */
+ion-button {
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: 1.2rem;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+}
+
+ion-button[color="success"] {
+  --background: #28a745;
+  --color: #fff;
+}
+
+ion-button[color="danger"] {
+  --background: #dc3545;
+  --color: #fff;
+}
+
+/* Mensaje de error */
+.mensaje-error {
+  text-align: center;
+  color: #c62828;
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 400px) {
+  ion-title {
+    font-size: 1rem;
+  }
+
+  ion-button {
+    font-size: 0.9rem;
+  }
+
+  ion-item {
+    margin-bottom: 1rem;
+  }
+}

@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:host {
+  --ion-font-family: 'Poppins', sans-serif;
+}
+
+/* ---------------------- HEADER ---------------------- */
+.header {
+  background: linear-gradient(135deg, #3880ff, #4c8dff);
+  padding: 1.5rem 1rem;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.titulo-header {
+  margin: 0;
+  font-size: 1.8rem;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.nueva-reunion-btn {
+  font-size: 0.8rem;
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --border-radius: 20px;
+  --background: #ffffff;
+  --color: #3880ff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+}
+
+/* Responsive header */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .titulo-header {
+    font-size: 1.4rem;
+  }
+
+  .nueva-reunion-btn {
+    margin-top: 0.5rem;
+    align-self: center;
+  }
+}
+
+/* ---------------------- BACK BUTTON ---------------------- */
+.back-button-container {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  z-index: 10;
+}
+
+.custom-back-btn {
+  --color: white;
+  --padding-start: 0;
+  --padding-end: 0;
+  --min-width: 32px;
+}
+
+.custom-back-btn ion-icon {
+  font-size: 24px;
+}
+
+/* ---------------------- MAIN CONTENT ---------------------- */
+.main-content {
+  --background: #f7f9fc;
+}
+
+.container {
+  padding: 1rem;
+}
+
+/* ---------------------- BOTONES ---------------------- */
+ion-button {
+  margin: 0.5rem 0;
+  --border-radius: 10px;
+  --box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ion-color-info {
+  --ion-color-base: #00bcd4 !important;
+  --ion-color-base-rgb: 0, 188, 212 !important;
+  --ion-color-contrast: #ffffff !important;
+  --ion-color-contrast-rgb: 255, 255, 255 !important;
+  --ion-color-shade: #00a5bb !important;
+  --ion-color-tint: #1cd1e4 !important;
+}
+
+/* ---------------------- CARDS ---------------------- */
+ion-card {
+  --background: #ffffff;
+  color: #000000;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 1.5rem;
+}
+
+ion-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+ion-card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1e88e5;
+  margin-bottom: 0.3rem;
+}
+
+ion-card-subtitle {
+  font-size: 0.9rem;
+  color: #555555;
+}
+
+ion-card-content p {
+  color: #333;
+  margin: 0;
+}
+
+/* ---------------------- FORMULARIOS ---------------------- */
+ion-item {
+  --background: transparent;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+ion-label {
+  font-weight: 500;
+  color: #333;
+}
+
+ion-input,
+ion-textarea {
+  --padding-start: 12px;
+  --padding-end: 12px;
+  font-size: 1rem;
+}
+.acciones-comunicado {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+/* ---------------------- RESPONSIVE FORM ---------------------- */
+@media (max-width: 768px) {
+  ion-card {
+    padding: 0.5rem;
+  }
+
+  ion-button {
+    font-size: 0.9rem;
+  }
+
+  ion-input,
+  ion-textarea {
+    font-size: 0.95rem;
+  }
+}

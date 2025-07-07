@@ -30,7 +30,7 @@ export class CrearCuentaPage implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private firestore: Firestore,
-    private auth: Auth   // ✅ Agregado: para Firebase Auth
+    private auth: Auth
   ) {}
 
   ngOnInit() {
@@ -65,7 +65,7 @@ export class CrearCuentaPage implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/intro']);
+    this.router.navigate(['/menu-principal-pd']);
   }
 
   async registrarCuenta() {
@@ -80,11 +80,12 @@ export class CrearCuentaPage implements OnInit {
       // ✅ Crear usuario con Firebase Auth
       const userCredential = await createUserWithEmailAndPassword(this.auth, correo, contrasena);
 
-      // ✅ Guardar solo nombre y correo en Firestore
+      // ✅ Guardar usuario en Firestore con rol predefinido
       await addDoc(collection(this.firestore, 'usuarios'), {
-        uid: userCredential.user.uid, // puedes guardar el UID si luego necesitas identificarlo
+        uid: userCredential.user.uid,
         nombre,
         correo,
+        rol: 'padre', // 👈🏼 Campo agregado automáticamente
         fechaRegistro: new Date()
       });
 

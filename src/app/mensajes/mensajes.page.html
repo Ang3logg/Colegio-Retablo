@@ -1,5 +1,14 @@
 <ion-header>
+  <!-- Toolbar superior con botón de retroceso -->
   <ion-toolbar class="header-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/menu-principal"
+        text=""
+        icon="arrow-back-outline"
+        class="custom-back-button"
+      ></ion-back-button>
+    </ion-buttons>
     <ion-title class="header-title">Mensajes</ion-title>
   </ion-toolbar>
 
@@ -17,11 +26,10 @@
 
 <ion-content class="content">
   <ion-list>
-
     <!-- Mensaje 1 -->
     <ion-item class="message-item" lines="none" detail="false">
       <ion-avatar slot="start" class="avatar">
-        <img src="../../assets/images/mamawa.jpg" />
+        <img src="assets/mamawa.jpg" />
       </ion-avatar>
       <ion-label class="message-text">
         <h2 class="sender-name">Profesor Juan</h2>
@@ -33,7 +41,7 @@
     <!-- Mensaje 2 -->
     <ion-item class="message-item" lines="none" detail="false">
       <ion-avatar slot="start" class="avatar">
-        <img src="../../assets/images/prosor.jpg" />
+        <img src="assets/prosor.jpg" />
       </ion-avatar>
       <ion-label class="message-text">
         <h2 class="sender-name">Padre de Ana</h2>
@@ -45,7 +53,7 @@
     <!-- Mensaje 3 -->
     <ion-item class="message-item" lines="none" detail="false">
       <ion-avatar slot="start" class="avatar">
-        <img src="../../assets/images/prosorLuis.jpg" />
+        <img src="assets/prosorLuis.jpg" />
       </ion-avatar>
       <ion-label class="message-text">
         <h2 class="sender-name">Docente Luis</h2>
@@ -53,7 +61,6 @@
       </ion-label>
       <ion-note slot="end" class="message-time">Ayer</ion-note>
     </ion-item>
-
   </ion-list>
 
   <!-- Botón flotante nuevo mensaje -->

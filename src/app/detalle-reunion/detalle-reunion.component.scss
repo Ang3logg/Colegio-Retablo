@@ -1,0 +1,231 @@
+:root {
+  color-scheme: light;
+}
+
+ion-content {
+  --background: #f9fbfd;
+}
+
+/* Tarjeta principal del formulario */
+.form-card {
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+  padding: 2rem;
+  margin: 1rem auto;
+  max-width: 720px;
+}
+
+/* Título del formulario */
+ion-card-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1a237e;
+  margin-bottom: 1rem;
+}
+
+/* Estilo general de los items del formulario */
+ion-item {
+  --background: #f4f6f8 !important;
+  border-radius: 12px;
+  margin-bottom: 20px !important;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Espaciado entre label y campo */
+ion-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #1a237e !important;
+  margin-bottom: 8px !important;
+}
+
+/* Estilo especial para checkbox */
+.checkbox-item ion-label {
+  margin-left: 10px;
+  margin-bottom: 0;
+  color: #37474f;
+  font-size: 0.95rem;
+}
+
+/* Inputs generales */
+ion-input,
+ion-textarea,
+ion-select,
+ion-datetime {
+  --padding-start: 12px;
+  font-size: 0.95rem;
+  color: #000 !important;
+  background-color: #ffffff !important;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px #d0d0d0;
+  padding: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Estilos adicionales para ion-datetime */
+ion-datetime {
+  --background: #ffffff !important;
+  --color: #000000 !important;
+}
+
+/* Estilo interno del calendario */
+ion-datetime::part(native-input),
+ion-datetime::part(calendar-day),
+ion-datetime::part(calendar-day-body),
+ion-datetime::part(calendar-day-header),
+ion-datetime::part(calendar-month-year) {
+  background-color: #ffffff !important;
+  color: #1a237e !important;
+  border-radius: 8px;
+}
+
+/* Botón principal */
+ion-button {
+  margin-top: 2rem;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 14px rgba(72, 187, 120, 0.3);
+}
+
+/* Corrección de fondo de listas */
+.list-md {
+  background: #ffffff !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Campo de hora y meridiano en línea */
+.hora-meridiano-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.hora-input {
+  flex: 1;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  font-size: 0.95rem;
+  background-color: #ffffff !important;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px #d0d0d0;
+  text-align: center;
+}
+
+.hora-input input {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.meridiano-select {
+  width: 90px;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  font-size: 0.95rem;
+  background-color: #ffffff !important;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px #d0d0d0;
+}
+
+/* 🔽 SOLO en móviles (≤ 480px) */
+@media screen and (max-width: 480px) {
+  .form-card {
+    padding: 1.2rem;
+    margin: 0.8rem;
+  }
+
+  ion-card-title {
+    font-size: 1.2rem;
+  }
+
+  ion-item {
+    padding: 12px;
+    margin-bottom: 16px !important;
+  }
+
+  ion-label {
+    font-size: 0.9rem;
+  }
+
+  ion-input,
+  ion-textarea,
+  ion-select,
+  ion-datetime {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  ion-button {
+    font-size: 0.95rem;
+  }
+}
+.custom-back-btn {
+  --color: white;
+  --padding-start: 0;
+  --padding-end: 0;
+  --min-width: 32px;
+}
+
+.custom-back-btn ion-icon {
+  font-size: 24px;
+}
+
+.titulo-centrado {
+  text-align: center;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: white;
+}
+ion-card {
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+ion-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+ion-card-subtitle {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+ion-card-content ion-button {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+ion-card {
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+ion-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+ion-card-subtitle {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+ion-card-content ion-button {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}

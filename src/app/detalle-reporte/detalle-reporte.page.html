@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/reportes-asistencia"
+        icon="arrow-back-outline"
+        text=""
+        class="custom-back-btn"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">📄 Vista del Reporte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="reporte; else sinReporte">
+    <!-- Vista en pantalla -->
+    <div id="reporte-pdf">
+  <!-- ✅ Logo visible solo para el PDF -->
+  <div style="text-align: center; margin-bottom: 16px;">
+    <img src="assets/images/aea-pica.png" alt="Logo de la escuela" style="width: 120px;" />
+  </div>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ reporte.titulo }}</ion-card-title>
+      <ion-card-subtitle>{{ reporte.fecha }} - {{ reporte.tipo }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Grado y Sección:</strong> {{ reporte.gradoSeccion }}</p>
+      <p><strong>Descripción:</strong> {{ reporte.descripcion }}</p>
+    </ion-card-content>
+  </ion-card>
+</div>
+
+
+    <!-- Botones -->
+    <ion-button expand="block" color="primary" (click)="generarPDF()">
+      💾 Descargar PDF
+    </ion-button>
+    <ion-button expand="block" color="warning" [routerLink]="['/edicion-reporte', reporte.id]">
+      ✏️ Editar Reporte
+    </ion-button>
+    <ion-button expand="block" color="danger" (click)="eliminarReporte()">
+      🗑️ Eliminar Reporte
+    </ion-button>
+
+    <!-- Plantilla del PDF bonito (invisible en pantalla) -->
+    <div id="pdf-content" style="display: none; padding: 30px; font-family: Arial; background-color: white; color: #000;">
+      <div style="text-align: center;">
+        <img src="assets/images/aea-pica.png" style="width: 100px; margin-bottom: 10px;" alt="Logo Colegio" />
+        <h2 style="margin: 0;">Reporte de Asistencia</h2>
+        <p><strong>{{ reporte.fecha }}</strong></p>
+      </div>
+
+      <hr />
+
+      <div style="margin-top: 20px;">
+        <p><strong>Título:</strong> {{ reporte.titulo }}</p>
+        <p><strong>Tipo:</strong> {{ reporte.tipo }}</p>
+        <p><strong>Grado y Sección:</strong> {{ reporte.gradoSeccion }}</p>
+        <p><strong>Descripción:</strong></p>
+        <p style="margin-left: 10px;">{{ reporte.descripcion }}</p>
+      </div>
+
+      <div style="margin-top: 60px; text-align: right;">
+        <p>________________________</p>
+        <p><strong>Firma del Responsable</strong></p>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Error si no hay reporte -->
+  <ng-template #sinReporte>
+    <div class="mensaje-error ion-padding">
+      <p>No se encontró el reporte.</p>
+    </div>
+  </ng-template>
+</ion-content>

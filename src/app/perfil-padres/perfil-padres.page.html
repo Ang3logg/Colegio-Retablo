@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil del Padre</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="perfil-content">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Información Personal</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div class="form-grid">
+        <ion-item>
+          <ion-label position="floating" class="label">Nombre completo</ion-label>
+          <ion-input [(ngModel)]="perfil.nombre"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating" class="label">Correo electrónico</ion-label>
+          <ion-input [(ngModel)]="perfil.correo" type="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating" class="label">Teléfono</ion-label>
+          <ion-input [(ngModel)]="perfil.telefono" type="tel"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating" class="label">Nombre del hijo</ion-label>
+          <ion-input [(ngModel)]="perfil.hijo"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating" class="label">Grado</ion-label>
+          <ion-input [(ngModel)]="perfil.grado"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating" class="label">Fecha de registro</ion-label>
+          <ion-input [(ngModel)]="perfil.fechaRegistro" type="date"></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" class="btn-guardar" (click)="guardarCambios()">
+          Guardar Cambios
+        </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:host {
+  --ion-font-family: 'Poppins', sans-serif;
+}
+
+/* ---------------------- HEADER ---------------------- */
+
+ion-header {
+  background: linear-gradient(135deg, #3880ff, #4c8dff);
+  color: white;
+  padding-top: env(safe-area-inset-top);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+ion-toolbar {
+  --background: transparent;
+  --color: #ffffff;
+  border: none;
+}
+ion-title.titulo-header {
+  font-size: 1.625rem;
+  font-weight: 600;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+ion-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+h1 {
+    margin-top: 20px;
+    font-size: 1.625rem;
+    justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center;
+}
+
+ion-back-button.custom-back-btn {
+  --color: white;
+  --padding-start: 0;
+  --padding-end: 0;
+  --min-width: 32px;
+}
+
+.custom-back-btn ion-icon {
+  font-size: 24px;
+}
+
+/* ---------------------- MAIN CONTENT ---------------------- */
+
+ion-content {
+  --background: #f7f9fc;
+  padding: 1rem;
+}
+
+/* ---------------------- CARD ---------------------- */
+
+ion-card {
+  --background: #ffffff;
+  color: #000000;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  margin-bottom: 1.5rem;
+}
+
+ion-card-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1e88e5;
+  margin-bottom: 0.5rem;
+}
+
+/* ---------------------- FORMULARIO ---------------------- */
+
+ion-item {
+  --background: #ffffff;
+  --color: #000000;
+  --highlight-color-focused: #3880ff;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+ion-label {
+  font-weight: 500;
+}
+
+input[type="file"] {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* ---------------------- BOTÓN PUBLICAR ---------------------- */
+
+ion-button {
+  --border-radius: 20px;
+  --background: #3880ff;
+  --color: #ffffff;
+  --box-shadow: 0 4px 12px rgba(56, 128, 255, 0.3);
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+/* ---------------------- RESPONSIVE ---------------------- */
+
+@media (max-width: 768px) {
+  ion-title {
+    font-size: 1.2rem;
+  }
+
+  ion-card {
+    padding: 0.75rem;
+  }
+
+  ion-button {
+    font-size: 0.9rem;
+  }
+}

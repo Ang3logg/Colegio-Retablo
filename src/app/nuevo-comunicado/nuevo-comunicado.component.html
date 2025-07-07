@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" class="back-button-container">
+      <ion-back-button
+        defaultHref="/comunicados-director"
+        icon="arrow-back-outline"
+        text=""
+        class="custom-back-btn"
+      ></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="titulo-header">Nuevo Comunicado</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="main-content">
+  <div class="container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Redactar Comunicado</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Título</ion-label>
+          <ion-input [(ngModel)]="titulo" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Mensaje</ion-label>
+          <ion-textarea [(ngModel)]="mensaje" autoGrow="true"></ion-textarea>
+        </ion-item>
+
+       
+
+        <ion-button
+          expand="block"
+          color="primary"
+          (click)="publicarComunicado()"
+          [disabled]="!titulo || !mensaje"
+        >
+          Publicar Comunicado
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:host {
+  --ion-font-family: 'Poppins', sans-serif;
+}
+
+.fondo-reporte {
+  --background: #f2f4f7;
+}
+
+.form-reporte {
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Título */
+ion-card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1a237e;
+  margin-bottom: 10px;
+}
+
+/* Elementos del formulario */
+ion-item {
+  --background: #f4f6f8 !important;
+  border-radius: 12px;
+  margin-bottom: 20px !important;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Espaciado entre label y campo */
+ion-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #1a237e !important;
+  margin-bottom: 8px !important;
+}
+
+/* Inputs, selects, textareas, datetime */
+ion-input,
+ion-select,
+ion-textarea,
+ion-datetime {
+  --padding-start: 12px;
+  font-size: 0.95rem;
+  color: #000 !important;
+  background-color: #ffffff !important;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px #d0d0d0;
+  padding: 10px;
+}
+
+/* Checkbox */
+.checkbox-item ion-label {
+  margin-left: 10px;
+  color: #37474f;
+  font-size: 0.95rem;
+}
+
+/* Botón guardar */
+.guardar-btn {
+  margin-top: 2rem;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 14px rgba(72, 187, 120, 0.3);
+}
+
+/* Corrige fondo oscuro inesperado en modo Material Design */
+.list-md {
+  background: #ffffff !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Responsive solo para celulares */
+@media screen and (max-width: 480px) {
+  .form-reporte {
+    padding: 1rem;
+    margin: 1rem 0.5rem;
+  }
+
+  ion-card-title {
+    font-size: 1.05rem;
+  }
+
+  ion-label,
+  ion-input,
+  ion-select,
+  ion-textarea,
+  ion-datetime {
+    font-size: 0.9rem;
+  }
+
+  .guardar-btn {
+    font-size: 0.9rem;
+  }
+}
+.hora-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.hora-container ion-input {
+  flex: 1;
+}
+
+.meridiano-select {
+  width: 80px;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px #d0d0d0;
+  background-color: #ffffff !important;
+}
+.hora-container {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.hora-item,
+.meridiano-item {
+  --background: #f4f6f8 !important;
+  border-radius: 12px;
+  flex: 1;
+  padding: 0;
+  margin: 0;
+  box-shadow: inset 0 0 0 1px #d0d0d0;
+  background-color: #ffffff !important;
+}
+
+.meridiano-item {
+  max-width: 90px;
+}
+
+.hora-item ion-input,
+.meridiano-item ion-select {
+  padding: 10px;
+  font-size: 0.95rem;
+  color: #000;
+}
+.custom-back-btn {
+  --color: white;
+  --padding-start: 0;
+  --padding-end: 0;
+  --min-width: 32px;
+}
+
+.custom-back-btn ion-icon {
+  font-size: 24px;
+}
+
+.titulo-centrado {
+  text-align: center;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: white;
+}

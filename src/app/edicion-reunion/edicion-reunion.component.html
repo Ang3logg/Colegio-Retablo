@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/reuniones-programadas-director"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">✏️ Editar Reunión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form *ngIf="reunion">
+    <ion-item>
+      <ion-label position="floating">Asunto</ion-label>
+      <ion-input [(ngModel)]="reunion.asunto" name="asunto"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Participantes</ion-label>
+      <ion-input
+        [(ngModel)]="reunion.participantes"
+        name="participantes"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Fecha</ion-label>
+      <ion-input
+        type="date"
+        [(ngModel)]="reunion.fecha"
+        name="fecha"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Hora</ion-label>
+      <ion-input type="time" [(ngModel)]="reunion.hora" name="hora"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Duración</ion-label>
+      <ion-input [(ngModel)]="reunion.duracion" name="duracion"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Ubicación</ion-label>
+      <ion-input [(ngModel)]="reunion.ubicacion" name="ubicacion"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Responsable</ion-label>
+      <ion-input
+        [(ngModel)]="reunion.responsable"
+        name="responsable"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-checkbox
+        slot="start"
+        [(ngModel)]="reunion.requiereConfirmacion"
+        name="requiereConfirmacion"
+      ></ion-checkbox>
+      <ion-label>¿Requiere confirmación?</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-textarea
+        [(ngModel)]="reunion.descripcion"
+        name="descripcion"
+      ></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Observaciones</ion-label>
+      <ion-textarea
+        [(ngModel)]="reunion.observaciones"
+        name="observaciones"
+      ></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Enlace de Zoom / Meet</ion-label>
+      <ion-input
+        [(ngModel)]="enlaceZoom"
+        placeholder="https://zoom.us/..."
+        type="url"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" color="success" (click)="guardarCambios()">
+      💾 Guardar Cambios
+    </ion-button>
+  </form>
+
+  <div *ngIf="!reunion">
+    <p>No se encontró la reunión para editar.</p>
+  </div>
+</ion-content>

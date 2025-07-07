@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/comunicados-director"></ion-back-button>
+  </ion-buttons>
+  <ion-title class="titulo-centrado">✏️ Editar Comunicado</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding main-content">
+  <div class="editar-card">
+    <ion-item>
+      <ion-label position="stacked">Título</ion-label>
+      <ion-input [(ngModel)]="titulo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Mensaje</ion-label>
+      <ion-textarea [(ngModel)]="mensaje"></ion-textarea>
+    </ion-item>
+
+    <div class="acciones-editar">
+      <ion-button color="success" (click)="guardarCambios()" class="guardar-btn">
+        💾 Guardar Cambios
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

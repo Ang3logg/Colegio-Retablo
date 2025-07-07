@@ -1,70 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Fuente y fondo base */
 :host {
-  --ion-background-color: #ffffff !important; /* Fondo blanco global */
-  --ion-item-background: #ffffff !important;
-  background-color: #ffffff !important;
+  --ion-background-color: #f8f9fa;
+  font-family: 'Poppins', sans-serif;
 }
 
+/* ======================================
+   CONTENIDO
+====================================== */
 ion-content.reportes-content {
-  --background: #ffffff !important;
-  background-color: #ffffff !important;
-  padding: 20px;
+  --background: #f8f9fa;
+  padding: 1.5rem 1rem;
 }
 
+/* ======================================
+   TOOLBAR SUPERIOR RESPONSIVA
+====================================== */
 .header-toolbar {
-  --background: #4a90e2 !important;
+  --background: #2a75d6;
   --color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
 }
 
+ion-toolbar.header-toolbar {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+}
+
+ion-buttons[slot="start"] {
+  z-index: 2;
+}
+
+.titulo-centrado {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-left: -32px; /* compensamos el botón izquierdo */
+  padding-right: 32px; /* compensamos lado derecho */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Botón de retroceso */
+.custom-back-btn {
+  --color: #ffffff;
+  --padding-start: 0;
+  --padding-end: 0;
+  --min-width: 32px;
+}
+.custom-back-btn ion-icon {
+  font-size: 24px;
+}
+
+/* ======================================
+   SEARCH BAR
+====================================== */
 .search-toolbar {
-  --background: #ffffff !important;
+  --background: #f8f9fa;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .searchbar-custom {
-  --background: #ffffff !important;
-  --color: #000000;
-  --placeholder-color: #999999;
-  padding: 0 10px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --background: #ffffff;
+  --color: #212529;
+  --placeholder-color: #adb5bd;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 0 12px;
 }
 
+/* ======================================
+   BOTÓN NUEVO REPORTE
+====================================== */
 .nuevo-reporte-btn {
-  margin: 20px 0;
-  --background: #4a90e2;
+  margin: 1.2rem auto 0 auto;
+  --background: #2a75d6;
   --color: #ffffff;
   font-weight: 600;
   font-size: 0.95rem;
-  border-radius: 10px;
+  border-radius: 14px;
   width: 100%;
   max-width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.25);
+  height: 44px;
+  box-shadow: 0 4px 12px rgba(42, 117, 214, 0.3);
 }
 
-.lista-reportes {
-  --background: #ffffff !important;
-  background-color: #ffffff !important;
-  padding: 10px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-  border-radius: 12px;
+/* ======================================
+   TARJETAS DE REPORTES
+====================================== */
+.container-reportes {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
 }
 
-ion-item {
-  --border-radius: 12px;
-  background: #ffffff !important;
-  border: 1px solid #e0e6ed;
-  margin-bottom: 10px;
+ion-card.card-reporte {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e9ecef;
+  transition: all 0.25s ease;
+  padding: 1rem;
 }
 
-ion-label h3 {
-  font-size: 1rem;
+ion-card.card-reporte:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+ion-card-title {
+  font-size: 1.1rem;
   font-weight: 600;
-  color: #344054;
-  margin-bottom: 4px;
+  color: #2a75d6;
+  margin-bottom: 0.3rem;
 }
 
-ion-label p {
-  font-size: 0.875rem;
-  color: #667085;
+ion-card-subtitle {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+/* ======================================
+   BOTÓN "VER DETALLE" (NEUTRO)
+====================================== */
+ion-button.btn-detalle {
+  --background: transparent;
+  --color: #495057;
+  --border-color: #ced4da;
+  --box-shadow: none;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+ion-button.btn-detalle ion-icon {
+  color: #2a75d6;
+}
+
+ion-button.btn-detalle:hover {
+  --background: #f1f3f5;
+  --color: #2a75d6;
+  border-color: #2a75d6;
+}
+
+/* ======================================
+   MEDIA QUERIES PARA RESPONSIVE
+====================================== */
+@media screen and (max-width: 375px) {
+  .titulo-centrado {
+    font-size: 1.1rem;
+    padding-right: 20px;
+    margin-left: -24px;
+  }
+
+  .searchbar-custom {
+    font-size: 0.9rem;
+  }
+
+  .nuevo-reporte-btn {
+    font-size: 0.9rem;
+  }
 }

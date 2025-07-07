@@ -22,7 +22,11 @@
     </ion-item>
   </ion-list>
 
-  <ion-modal *ngIf="mostrarDetalles" [isOpen]="mostrarDetalles" (didDismiss)="cerrarDetalles()">
+  <ion-modal
+    *ngIf="mostrarDetalles"
+    [isOpen]="mostrarDetalles"
+    (didDismiss)="cerrarDetalles()"
+  >
     <ng-template>
       <ion-header>
         <ion-toolbar>

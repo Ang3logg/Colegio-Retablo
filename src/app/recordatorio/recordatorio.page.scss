@@ -5,6 +5,7 @@
   padding: 0;
 }
 
+/* Fondo general con imagen */
 ion-content {
   --background: url('../../assets/fondo.jpg') no-repeat center center / cover;
   padding: 16px;
@@ -12,21 +13,44 @@ ion-content {
   color: #333;
 }
 
-// Contenedor principal
+/* ===================== */
+/* 🔄 Override ion-card  */
+/* ===================== */
+
+ion-card {
+  --background: #ffffffec !important;  /* ✅ Elimina fondo oscuro */
+  --color: #2c3e50;
+  --box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  margin: 12px 8px;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  padding: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
+}
+
+ion-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* ======================== */
+/* 🎯 Recordatorios layout  */
+/* ======================== */
+
 .recordatorio-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background: transparent;  // ✅ Para que no tenga fondo negro
+  background: transparent;
   padding: 0;
 }
 
-// Cabecera con fecha y botón +
 .recordatorio-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(33, 150, 243, 0.8);
+  background-color: rgba(33, 150, 243, 0.9);
   padding: 16px;
   border-radius: 12px;
   color: white;
@@ -60,22 +84,14 @@ ion-content {
   justify-content: center;
 }
 
-// Lista de recordatorios
 .recordatorio-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-// Tarjeta de recordatorio
 .recordatorio-card {
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: transparent; /* ya lo toma del ion-card */
 }
 
 .recordatorio-text {
@@ -84,7 +100,6 @@ ion-content {
   margin-right: 10px;
 }
 
-// Botones de acción
 .recordatorio-actions {
   display: flex;
   gap: 8px;
@@ -104,7 +119,64 @@ ion-content {
   }
 }
 
-// Responsivo para móviles
+/* ==================== */
+/* 📅 Reuniones layout  */
+/* ==================== */
+
+.reuniones-container ion-card-title {
+  font-size: 22px;
+  color: #0d47a1;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.reunion-card {
+  background-color: transparent; /* hereda del ion-card */
+}
+
+.reunion-card ion-card-header {
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 12px;
+}
+
+.reunion-card ion-card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.reunion-card ion-card-subtitle {
+  font-size: 14px;
+  color: #888;
+}
+
+.reunion-card ion-card-content {
+  font-size: 15px;
+  color: #444;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.reunion-card p {
+  margin: 10px 0;
+}
+
+.reunion-card a {
+  color: #1e88e5;
+  text-decoration: none;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.reunion-card a:hover {
+  text-decoration: underline;
+}
+
+/* ================ */
+/* 📱 Responsive    */
+/* ================ */
 @media (max-width: 480px) {
   .recordatorio-header {
     padding: 12px;
@@ -150,5 +222,17 @@ ion-content {
 
   .recordatorio-actions ion-button {
     font-size: 16px;
+  }
+
+  .reunion-card {
+    padding: 16px;
+  }
+
+  .reunion-card ion-card-title {
+    font-size: 18px;
+  }
+
+  .reunion-card ion-card-content {
+    font-size: 14px;
   }
 }

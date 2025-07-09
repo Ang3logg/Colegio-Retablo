@@ -23,30 +23,14 @@
       <ion-toggle slot="end" [checked]="notificacionesActivas"></ion-toggle>
     </ion-item>
 
-    <ion-item button lines="none" (click)="toggleDarkMode()">
-      <ion-icon name="moon-outline" slot="start"></ion-icon>
-      <ion-label>Modo Oscuro</ion-label>
-      <ion-toggle slot="end" [checked]="modoOscuro"></ion-toggle>
-    </ion-item>
+   
 
     <ion-item button lines="none" [routerLink]="['/recuperar-clave']">
       <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
       <ion-label>Cambiar contraseña</ion-label>
     </ion-item>
 
-    <ion-item lines="none">
-      <ion-icon name="globe-outline" slot="start"></ion-icon>
-      <ion-label>Idioma</ion-label>
-      <ion-select
-        placeholder="Seleccionar"
-        interface="popover"
-        [(ngModel)]="idiomaSeleccionado"
-        (ionChange)="cambiarIdioma($event)"
-      >
-        <ion-select-option value="es">Español</ion-select-option>
-        <ion-select-option value="en">Inglés</ion-select-option>
-      </ion-select>
-    </ion-item>
+    
 
     <ion-item button lines="none" [routerLink]="['/privacidad']">
       <ion-icon name="shield-checkmark-outline" slot="start"></ion-icon>
